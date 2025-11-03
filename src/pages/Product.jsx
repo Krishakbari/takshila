@@ -1,126 +1,74 @@
 import React from 'react'
-import logo from '../assets/logo.png';
-import layer from "../assets/Layer.png";
-import logoblack from '../assets/logoblack.png';
-import cat1 from '../assets/cat1.jpg';
-import cat2 from '../assets/cat2.jpg';
-import cat3 from '../assets/cat3.jpg';
-import { ArrowRight } from "lucide-react";
-import OurProduct from '../components/OurProduct';
-import img2 from '../assets/img2.jpg';
-import ContactSupport from '../components/ContactSupport';
+import bgImage from "../assets/background.png"
+import product1 from "../assets/product1.png"
+import Whyus from '../components/Whyus';
 
-
-const categories = [
-    {
-        title: "Automotive Parts",
-        desc: "Precision automotive components and assembly parts",
-        img: cat1,
-    },
-    {
-        title: "Industrial Tools",
-        desc: "Professional-grade industrial tools and equipment",
-        img: cat2,
-    },
-    {
-        title: "CNC Components",
-        desc: "High-precision CNC machined components",
-        img: cat3,
-    },
-];
 
 const Product = () => {
+    const products = [
+        { id: 1, image: product1 },
+        { id: 2, image: product1 },
+        { id: 3, image: product1 },
+        { id: 4, image: product1 },
+        { id: 5, image: product1 },
+        { id: 6, image: product1 },
+    ];
+
     return (
         <>
-            <div className="relative bg-[#0F2D28] text-white h-[30vh] flex flex-col justify-center items-center overflow-hidden">
-                {/* Watermark BG Image */}
-                <img
-                    src={layer}
-                    alt="Background Layer"
-                    className="absolute left-10    top-0 h-full opacity-40 z-0"
-                />
 
-                {/* Content */}
-                <div className="flex items-center justify-center gap-2 mb-4">
-                    <img src={logo} alt="Contact Icon" className="w-6 h-6 object-contain opacity-50" />
-                    <p className="text-lg font-medium text-white/50">Our Products</p>
+            {/* Hero Section */}
+            <section
+                className="relative w-full h-[40vh] sm:h-[30vh] md:h-[40vh] flex items-center justify-center text-center text-white"
+                style={{
+                    backgroundImage: `url(${bgImage})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
+                {/* Overlay (darken background) */}
+                <div className="absolute inset-0 bg-black/50 z-0"></div>
+
+                {/* Text Content */}
+                <div className="relative z-10 px-4 sm:px-6">
+                    <p className="text-sm sm:text-base md:text-lg font-light mb-2">
+                        Over Products
+                    </p>
+                    <h1 className="text-xl sm:text-2xl md:text-4xl font-semibold mb-3">
+                        Products That Takshila Offers
+                    </h1>
+                    <p className="text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                        Leading the future of cast iron manufacturing with precision, quality,
+                        and innovation.
+                    </p>
                 </div>
-
-                {/* Heading */}
-                <h2 className="text-2xl md:text-3xl ml-10 font-semibold text-white/50 mb-2">
-                    Browse our specialized product lines
-                </h2>
-            </div>
+            </section>
 
 
 
-            <div className="bg-white py-16 px-4 md:px-0">
-                <div className="flex flex-col items-center mb-10 text-center">
-                    <img src={logoblack} alt="Product Icon" className="h-5 mb-2" />
-                    <h2 className="text-2xl md:text-3xl font-semibold text-[#11332c]">
-                        Browse our specialized product lines
-                    </h2>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {categories.map((item, index) => (
-                        <div
-                            key={index}
-                            className="relative h-[400px] group overflow-hidden  shadow-md"
-                        >
-                            <img
-                                src={item.img}
-                                alt={item.title}
-                                className="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-end p-6 text-white">
-                                <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
-                                <p className="text-sm text-white/80 mb-4">{item.desc}</p>
-                                <div className="flex items-center gap-1 text-sm hover:underline cursor-pointer">
-                                    Browse Category <ArrowRight size={16} />
-                                </div>
+            <section className="pt-12 bg-white px-4 sm:px-6 lg:px-10">
+                <div className="max-w-7xl mx-auto">
+                    {/* Product Grid */}
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                        {products.map((item) => (
+                            <div
+                                key={item.id}
+                                className="bg-white border rounded-lg border-gray-200  overflow-hidden "
+                            >
+                                <img
+                                    src={item.image}
+                                    alt={`Product ${item.id}`}
+                                    className="w-full h-50 sm:h-96 object-cover "
+                                />
                             </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            <OurProduct />
-            <ContactSupport />
-
-            <div className="max-w-[100%] mx-auto  mt-10  overflow-hidden h-auto md:h-[600px] flex flex-col md:flex-row">
-                {/* Left image */}
-                <div className="w-full md:w-1/2 h-[300px] md:h-full">
-                    <img src={img2} alt="Industrial Scene" className="w-full h-full object-center" />
-                </div>
-
-                {/* Right content - smaller and vertically centered */}
-                <div className="w-full md:w-1/2 bg-black text-white px-10 flex items-center h-full">
-                    <div className="max-w-full">
-                        {/* Icon and Heading */}
-                        <div className="flex items-center gap-3 mb-4">
-                            <img src={logo} alt="icon" className="w-6 h-6" />
-                            <h2 className="text-xl md:text-2xl font-semibold">Why choose us</h2>
-                        </div>
-
-                        {/* Quoted Text */}
-                        <p className="text-sm md:text-base leading-relaxed mb-6">
-                            “ MechTrade International stands out as a global leader in industrial engineering, driven by over 50 years of combined mechanical expertise and a steadfast commitment to quality...
-                            “ MechTrade International stands out as a global leader in industrial engineering, driven by over 50 years of combined mechanical expertise and a steadfast commitment to quality...
-                            “ MechTrade International stands out as a global leader in industrial engineering, driven by over 50 years of combined mechanical expertise and a steadfast commitment to quality...
-                        </p>
-
-                        {/* Author Info */}
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 rounded-full bg-gray-400"></div>
-                            <div>
-                                <h4 className="font-semibold">Markus Spencer</h4>
-                                <p className="text-sm text-gray-400">CEO & Founder</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <Whyus/>
+
 
         </>
     )
