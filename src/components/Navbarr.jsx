@@ -172,7 +172,7 @@ const Navbarr = () => {
                 navigate("/inquiry");
               }}
             >
-              Live Chat
+              Inquiry Now
             </button>
           </nav>
         </div>
